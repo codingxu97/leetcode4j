@@ -1,2 +1,2 @@
-rootProject.name = "leetcode"
+rootProject.name = "leetcode4j"
 
