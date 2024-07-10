@@ -20,7 +20,7 @@ package com.codingxu.practice.leetcode.newly;
  * 示例 1：
  * 输入：nums = [1,1,1,2,2,3]
  * 输出：5, nums = [1,1,2,2,3]
- * 解释：函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3。 不需要考虑数组中超出新长度后面的元素。
+ * 解释：函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3。不需要考虑数组中超出新长度后面的元素。
  * <p>
  * 示例 2：
  * 输入：nums = [0,0,1,1,1,1,2,3,3]
@@ -34,12 +34,37 @@ package com.codingxu.practice.leetcode.newly;
  */
 public class L0080RemoveDuplicates {
     public static void main(String[] args) {
-        int[] nums1 = {0,0,1,1,1,1,2,2,2,3,3};
+        int[] nums1 = {1,1,1,2,2,3};
         int count1 = removeDuplicates(nums1);
-        System.out.println(count1);
+
+        int[] nums2 = {0,0,1,1,1,1,2,3,3};
+        int count2 = removeDuplicates(nums2);
     }
 
+    /**
+     * 方法一：双指针。
+     * 时间复杂度：O(n)，其中 n 是数组的长度。我们最多遍历该数组一次。
+     * 空间复杂度：O(1)。我们只需要常数的空间存储若干变量。
+     *
+     * @param nums 目标数组
+     * @return 不重复 2 次的元素个数
+     */
     public static int removeDuplicates(int[] nums) {
-
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+        if (nums.length <= 2) {
+            return nums.length;
+        }
+        int fast = 2;
+        int slow = 2;
+        while (fast < nums.length) {
+            if (nums[fast] != nums[slow - 2]) {
+                nums[slow] = nums[fast];
+                slow++;
+            }
+            fast++;
+        }
+        return slow;
     }
 }
