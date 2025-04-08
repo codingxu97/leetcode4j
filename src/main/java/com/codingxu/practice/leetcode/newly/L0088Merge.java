@@ -40,7 +40,6 @@ public class L0088Merge {
         int[] nums2 = new int[]{12,15,16};
         int n = 3;
         merge3(nums1, m, nums2, n);
-        System.out.println();
     }
 
     /**
